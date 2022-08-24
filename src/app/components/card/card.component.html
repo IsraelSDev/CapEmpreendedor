@@ -1,1 +1,70 @@
-<p>card works!</p>
+<div *ngIf="users.length > 0; else cardEmpty" class="cards-container">
+    <p-card *ngFor="let user of users" class="p-card" [header]="user.first_name +' '+ user.last_name"
+        [style]="{width: '360px'}" styleClass="p-card-shadow">
+        <ng-template pTemplate="header">
+            <div [ngStyle]="{ backgroundImage: 'url('+user.avatar+')', filter: 'drop-shadow(20px 1px 5px #a2a2a2)'}"
+                class="picture"></div>
+        </ng-template>
+        <h4>
+            {{user.phone_number}}
+        </h4>
+        <h5>{{user.username}}</h5>
+        <ng-template pTemplate="footer">
+            <button pButton type="button" icon="pi pi-external-link" label="Gerenciar" [routerLink]="['/'+user.id]"
+                class="p-button-success"></button>
+            <button data-bs-toggle="modal" href="#exampleModalToggle" role="button" pButton pRipple type="button"
+                icon="pi pi-user" class="p-button-rounded" (click)="setUserAndShow(user)"></button>
+        </ng-template>
+    </p-card>
+</div>
+
+<ng-template #cardEmpty>
+    <p-card class="p-card" header="Carregando" [style]="{width: '360px', textAlign: 'center'}"
+        styleClass="p-card-shadow card-empty">
+        <div class="spinner-border text-primary" role="status" style="width: 60px; height: 60px;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </p-card>
+</ng-template>
+
+
+<div *ngIf="userInfo != undefined; else defaultModal" class="modal fade" id="exampleModalToggle" aria-hidden="true"
+    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">{{userInfo.first_name}} {{userInfo.last_name}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <img class="modal-user-photo" [src]="userInfo.avatar">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul>
+                                <h5>Personal Information: </h5>
+                                <li>ID: {{userInfo.id}}</li>
+                                <li>E-mail: {{userInfo.email}}</li>
+                                <li>Gender: {{userInfo.gender}}</li>
+                                <li>Phone number: {{userInfo.phone_number}}</li>
+                                <li>Date of Birth: {{userInfo.date_of_birth}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #defaultModal>
+
+</ng-template>
