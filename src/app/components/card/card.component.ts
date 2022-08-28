@@ -17,7 +17,7 @@ export class CardComponent implements OnInit {
 
   constructor(private data: GetDataService, private detail: HandleDetailService) {
     this.data.getData().subscribe(data => {
-      this.users = data;
+      // this.users = data;
     });
   }
   ngOnInit(): void {

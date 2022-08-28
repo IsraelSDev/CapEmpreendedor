@@ -22,8 +22,9 @@
 </div>
 
 <ng-template #cardEmpty>
-    <p-card class="p-card" header="Carregando" [style]="{width: '360px', textAlign: 'center'}"
-        styleClass="p-card-shadow card-empty">
+    <p-card class="p-card" header="Carregando" [style]="{width: '100%', textAlign: 'center', display: 'flex', alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center'}" styleClass="p-card-shadow card-empty">
         <div class="spinner-border text-primary" role="status" style="width: 60px; height: 60px;">
             <span class="visually-hidden">Loading...</span>
         </div>
