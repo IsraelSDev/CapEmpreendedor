@@ -10,12 +10,15 @@
         </h4>
         <h5>{{user.username}}</h5>
         <ng-template pTemplate="footer">
-            <button pButton type="button" icon="pi pi-external-link" label="Gerenciar" [routerLink]="['/'+user.id]"
-                class="p-button-success"></button>
+            <button pButton type="button" icon="pi pi-external-link" label="Gerenciar" (click)="setUserAndRdirect(user)"
+                [routerLink]="['/'+user.id]" class="p-button-success"></button>
             <button data-bs-toggle="modal" href="#exampleModalToggle" role="button" pButton pRipple type="button"
                 icon="pi pi-user" class="p-button-rounded" (click)="setUserAndShow(user)"></button>
         </ng-template>
     </p-card>
+</div>
+<div class="row" style="width: 200px; margin: auto;" *ngIf="users.length > 0;">
+    <button pButton pRipple type="button" label="+" class="p-button-success" (click)="getMoreUsers()"></button>
 </div>
 
 <ng-template #cardEmpty>
@@ -26,7 +29,6 @@
         </div>
     </p-card>
 </ng-template>
-
 
 <div *ngIf="userInfo != undefined; else defaultModal" class="modal fade" id="exampleModalToggle" aria-hidden="true"
     aria-labelledby="exampleModalToggleLabel" tabindex="-1">

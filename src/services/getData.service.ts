@@ -5,15 +5,18 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class GetDataService {
-    constructor(private http: HttpClient) { }
+    base: String = 'https://random-data-api.com/api/v2/';
+
+    constructor(private http: HttpClient) {
+    }
 
     getData(): Observable<any> {
-        const url = 'https://random-data-api.com/api/v2/users?size=9'
+        const url = this.base + 'users?size=9'
         return this.http.get(url);
     }
 
     getDataById(id: number): Observable<any> {
-        const url = 'https://random-data-api.com/api/v2/users/' + id;
+        const url = this.base + 'users/' + id;
         return this.http.get(url);
     }
 }

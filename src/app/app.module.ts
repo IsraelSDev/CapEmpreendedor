@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './components/card/card.component';
 import { TabmenuComponent } from './components/tabmenu/tabmenu.component';
+import { DetailComponent } from './components/detail/detail.component';
+import { HandleDetailService } from 'src/services/handleDetail.service';
 
 import { MessageModule } from 'primeng/message';
 import { TabMenuModule } from 'primeng/tabmenu';
@@ -14,8 +17,7 @@ import { BadgeModule } from "primeng/badge";
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { DetailComponent } from './components/detail/detail.component';
-
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 
 @NgModule({
@@ -36,8 +38,10 @@ import { DetailComponent } from './components/detail/detail.component';
     ButtonModule,
     HttpClientModule,
     DialogModule,
+    SelectButtonModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [HandleDetailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
