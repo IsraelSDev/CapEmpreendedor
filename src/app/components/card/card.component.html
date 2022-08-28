@@ -5,10 +5,10 @@
             <div [ngStyle]="{ backgroundImage: 'url('+user.avatar+')', filter: 'drop-shadow(20px 1px 5px #a2a2a2)'}"
                 class="picture"></div>
         </ng-template>
-        <h4>
-            {{user.phone_number}}
-        </h4>
         <h5>{{user.username}}</h5>
+        <h4>
+            {{user.subscription.status}}
+        </h4>
         <ng-template pTemplate="footer">
             <button pButton type="button" icon="pi pi-external-link" label="Gerenciar" (click)="setUserAndRdirect(user)"
                 [routerLink]="['/'+user.id]" class="p-button-success"></button>
